@@ -1,32 +1,25 @@
 # 🏦 Digital Fixed Deposit System
 
 <p align="center">
-  <strong>A full-stack banking application for managing Fixed Deposits digitally — designed and developed entirely by Priyanshu Mishra.</strong>
+  <strong>A secure, full-stack digital banking platform for managing Fixed Deposits — architected and developed by Priyanshu Mishra.</strong>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Java-17-ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Spring_Boot-4.0-6DB33F?style=flat-square&logo=springboot"/>
+  <img src="https://img.shields.io/badge/Spring_Boot-3.x-6DB33F?style=flat-square&logo=springboot"/>
   <img src="https://img.shields.io/badge/Spring_Security-JWT-6DB33F?style=flat-square"/>
+  <img src="https://img.shields.io/badge/OAuth2-Google-4285F4?style=flat-square&logo=google"/>
   <img src="https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&logo=postgresql"/>
   <img src="https://img.shields.io/badge/Vue_3-TypeScript-4FC08D?style=flat-square&logo=vuedotjs"/>
-  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=flat-square&logo=docker"/>
 </p>
 
 ---
 
 ## 📌 Overview
 
-The **Digital Fixed Deposit System** is a secure, full-stack banking platform that enables users to digitally manage Fixed Deposits — from booking to maturity and withdrawal.
+The **Digital Fixed Deposit System** is a modern, secure, full-stack banking application that enables users to digitally manage Fixed Deposits — from booking and automated interest computation to maturity processing and withdrawal handling.
 
-This project demonstrates:
-
-- Secure authentication and authorization
-- Financial calculations with business rules
-- Full-stack integration
-- Scheduled background processing
-- Clean layered architecture
-- Logging and exception handling
+This project reflects strong backend architecture principles, production-grade authentication mechanisms, and clean frontend integration.
 
 ---
 
@@ -34,42 +27,43 @@ This project demonstrates:
 
 ## 🔹 Backend (Spring Boot)
 
-- RESTful API architecture
-- Layered design (Controller → Service → Repository)
-- JWT authentication (HTTP-only cookies)
-- Google OAuth2 integration
+- RESTful API design
+- Layered architecture (Controller → Service → Repository)
+- JWT-based authentication (Access + Refresh tokens)
+- Refresh token rotation strategy
+- Google OAuth2 login integration
 - OTP-based email verification
-- Scheduled tasks (FD maturity, OTP cleanup)
+- Scheduled tasks (FD maturity processing & OTP cleanup)
+- Role-Based Access Control (RBAC)
 - Global exception handling
-- Structured logging with SLF4J + Logback
+- Structured logging using SLF4J + Logback
+- Clean separation of DTOs and entities
 
 ## 🔹 Frontend (Vue 3 + TypeScript)
 
-- Component-based architecture
+- Component-driven architecture
 - Vue Router with route guards
-- Vuex state management
-- Axios interceptors for authentication
-- Modular service layer
-- Responsive UI design
+- Vuex for centralized state management
+- Axios interceptors for secure API communication
+- Modular service layer abstraction
+- Responsive and modern UI design
 
 ---
 
 # 🛠 Tech Stack
 
-## Backend
+## 🔹 Backend
 - Java 17
-- Spring Boot 4
+- Spring Boot
 - Spring Security
 - JWT (HS256)
 - OAuth2 (Google)
-- PostgreSQL
+- PostgreSQL 16
 - Maven
 - Lombok
-- JUnit 5
-- JaCoCo
-- SLF4J + Logback Logging
+- SLF4J + Logback
 
-## Frontend
+## 🔹 Frontend
 - Vue 3
 - TypeScript
 - Vite
@@ -80,67 +74,68 @@ This project demonstrates:
 
 ---
 
-# 🔐 Security Features
+# 🔐 Security Architecture
 
 - JWT-based authentication (Access + Refresh tokens)
-- Token rotation strategy
 - HTTP-only cookie storage
+- Secure refresh token rotation
+- Google OAuth2 authentication flow
 - BCrypt password hashing
-- Account lockout mechanism
-- OTP email verification
+- Account lockout after multiple failed attempts
+- OTP email verification system
 - Role-based access control
-- Global exception handling
-- CORS configuration
+- CORS security configuration
+- Centralized global exception handling
 
 ---
 
 # 💰 Core Functionalities
 
-## 👤 User Features
-- Register with email OTP verification
-- Secure login and logout
-- Google OAuth2 login
+## 👤 User Capabilities
+- Register with OTP verification
+- Secure login & logout
+- Login using Google OAuth2
 - Book Fixed Deposits
-- View and filter FDs
-- Track maturity dates
-- Interest timeline view
+- View and filter FD portfolio
+- Track maturity timeline
+- View calculated interest projections
 - Break FD with penalty preview
 - View withdrawal history
-- Raise support tickets
-- Profile management
+- Raise and track support tickets
+- Manage profile settings
 
-## 🛡 Admin Features
-- View all FDs
-- Update FD status
-- Monitor maturing FDs
+## 🛡 Admin Capabilities
+- View all Fixed Deposits
+- Update FD lifecycle status
+- Monitor upcoming maturities
 - Manage support tickets
-- Financial summaries and reports
+- View financial summaries and reporting insights
 
 ---
 
 # 📁 Project Structure
 
-
+```
 Digital-Fixed-Deposit-System
 │
 ├── backend
-│ ├── controller
-│ ├── service
-│ ├── repository
-│ ├── entity
-│ ├── config
-│ ├── dto
-│ ├── exception
-│ └── util
+│   ├── controller
+│   ├── service
+│   ├── repository
+│   ├── entity
+│   ├── config
+│   ├── dto
+│   ├── exception
+│   └── util
 │
 ├── frontend
-│ ├── components
-│ ├── views
-│ ├── services
-│ ├── store
-│ ├── router
-│ └── utils
-
+│   ├── components
+│   ├── views
+│   ├── services
+│   ├── store
+│   ├── router
+│   └── utils
+```
 
 ---
 
@@ -152,7 +147,6 @@ Digital-Fixed-Deposit-System
 - Node.js 18+
 - PostgreSQL 16+
 - Maven
-- Docker (optional)
 
 ---
 
@@ -161,90 +155,93 @@ Digital-Fixed-Deposit-System
 ```bash
 cd backend
 
-# Configure application.properties
-# Set database, JWT secret, mail credentials, OAuth2 credentials
+# Configure application.properties:
+# - Database credentials
+# - JWT secret
+# - Mail configuration
+# - OAuth2 client credentials
 
 ./mvnw clean install
 ./mvnw spring-boot:run
+```
 
 Backend runs at:
 
+```
 http://localhost:8080
-🔹 Frontend Setup
+```
+
+---
+
+## 🔹 Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 Frontend runs at:
 
+```
 http://localhost:3000
-🗄 Database
+```
+
+---
+
+# 🗄 Database Setup
 
 Create PostgreSQL database:
 
-CREATE DATABASE Digital_Fixed_Deposit_System_DB;
+```sql
+CREATE DATABASE digital_fixed_deposit_system_db;
+```
 
-Update application.properties:
+Update `application.properties`:
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/Digital_Fixed_Deposit_System_DB
+```
+spring.datasource.url=jdbc:postgresql://localhost:5432/digital_fixed_deposit_system_db
 spring.datasource.username=postgres
 spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
-🐳 Docker Deployment (Optional)
-docker build -t digital-fd-backend ./backend
-docker build -t digital-fd-frontend ./frontend
-docker-compose up -d
-🧪 Testing
-Backend
-./mvnw test
-./mvnw clean test jacoco:report
+```
 
-Coverage report:
+---
 
-target/site/jacoco/index.html
-Frontend
-npm run test
-npm run coverage
-📊 Logging
+# 📊 Logging & Observability
 
-Structured logging using SLF4J
+- Structured logging using SLF4J
+- Security event tracking
+- Scheduler activity monitoring
+- Centralized error handling via Global Exception Handler
+- Application lifecycle logging
 
-Application startup logs
+---
 
-Security event logs
+# 🎯 What This Project Demonstrates
 
-Error logs via Global Exception Handler
+- Secure authentication architecture (JWT + OAuth2)
+- Token lifecycle management
+- Financial business logic implementation
+- Clean layered backend architecture
+- RESTful API design principles
+- State management in modern frontend frameworks
+- Full-stack system integration
+- Production-oriented coding practices
 
-Scheduler activity logs
+---
 
-🎯 Learning Outcomes
+# 👨‍💻 Author
 
-This project demonstrates:
-
-Secure authentication architecture
-
-Financial business logic implementation
-
-Clean layered backend design
-
-Full-stack integration
-
-Token-based security
-
-State management in frontend
-
-REST API development
-
-Production-ready logging
-
-👨‍💻 Author
-
-Priyanshu Mishra
-
+**Priyanshu Mishra**  
 Full-stack developer focused on building secure, scalable backend systems and modern frontend applications.
 
-📄 License
+---
 
-This project is licensed under the MIT License.
+# 📄 License
 
-<p align="center"> Built with ❤️ by Priyanshu Mishra </p> ```
+This project is licensed under the **MIT License**.
+
+---
+
+<p align="center">Built with ❤️ by Priyanshu Mishra</p>
